@@ -25,10 +25,10 @@ for (const record of records) {
   const image = record.image
   if (!image?.cid || !image.localPath || image.status === 'failed') continue
 
-  const extension = path.extname(image.localPath).toLowerCase() || '.bin'
-  const filename = `${image.cid}${extension}`
   const sourceFile = path.join(source, image.localPath)
   const contents = await readFile(sourceFile)
+  const extension = detectExtension(image.localPath, contents)
+  const filename = `${image.cid}${extension}`
   const digest = createHash('sha256').update(contents).digest('hex')
   const existing = hashes.get(image.cid)
 
@@ -57,4 +57,14 @@ console.log(`Exported ${manifest.assetCount} CID-addressed images to ${imageDire
 
 async function readJson(file) {
   return JSON.parse(await readFile(file, 'utf8'))
+}
+
+function detectExtension(localPath, contents) {
+  const extension = path.extname(localPath).toLowerCase()
+  if (extension && extension !== '.bin') return extension
+
+  const brand = contents.subarray(4, 12).toString('ascii')
+  if (brand === 'ftypavif' || brand === 'ftypavis') return '.avif'
+
+  return extension || '.bin'
 }
