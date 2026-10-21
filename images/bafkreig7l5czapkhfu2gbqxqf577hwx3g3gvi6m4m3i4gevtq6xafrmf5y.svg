@@ -1,0 +1,39 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- 外圈光晕 -->
+    <circle cx="100" cy="100" r="90" fill="none" stroke="#00ff00" stroke-width="2" opacity="0.3">
+        <animate attributeName="r" from="90" to="95" dur="2s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="0.3" to="0" dur="2s" repeatCount="indefinite" />
+    </circle>
+    
+    <!-- 主硬币圆形 -->
+    <circle cx="100" cy="100" r="80" fill="#111" stroke="#00ff00" stroke-width="4"/>
+    
+    <!-- 齿轮效果 -->
+    <path d="M100 20
+        A80 80 0 0 1 180 100
+        A80 80 0 0 1 100 180
+        A80 80 0 0 1 20 100
+        A80 80 0 0 1 100 20
+        M100 40
+        A60 60 0 0 0 40 100
+        A60 60 0 0 0 100 160
+        A60 60 0 0 0 160 100
+        A60 60 0 0 0 100 40Z" 
+        fill="#111" stroke="#00ff00" stroke-width="2"/>
+    
+    <!-- MTH文字 -->
+    <text x="100" y="110" 
+        font-family="Arial, sans-serif" 
+        font-size="40" 
+        font-weight="bold" 
+        fill="#00ff00" 
+        text-anchor="middle">
+        MTH
+    </text>
+    
+    <!-- 动态效果 -->
+    <circle cx="100" cy="100" r="75" fill="none" stroke="#00ff00" stroke-width="1" opacity="0.5">
+        <animate attributeName="r" from="75" to="85" dur="3s" repeatCount="indefinite" />
+        <animate attributeName="opacity" from="0.5" to="0" dur="3s" repeatCount="indefinite" />
+    </circle>
+</svg> 
